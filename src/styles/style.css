@@ -1,0 +1,58 @@
+:root {
+--TOPBAR:     #323232;
+--SUBMENUS:   #252525;
+--BG:         #1E1E1E;
+--BORDER:     #373737;
+--MOUSEACTIVE:#4F9FEE;
+--TEXT:       #8e8e8e;
+  }
+html, body{ margin: 0; padding: 0; font-size: 10pt; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--TEXT); background-color: #2C313C; }
+.mainApp{ display: flex; flex-direction: column; flex-wrap: nowrap; width: 100%; height: 100%; overflow: hidden; border: 1px solid 04343048; -webkit-box-sizing: border-box; }
+.mainApp > .topBar { display: flex; flex-direction: row; width: 100%; height: 40px; border-bottom: 3px solid var(--BORDER); background-color: var(--TOPBAR); -webkit-user-select: none; }
+.topBar > .titleBar { display: flex; flex-direction: row; align-items: center; }
+.topBar > .titleBar { display: flex; flex-direction: row; align-items: center; width: 100%; }
+.titleBar > .toggleButton{ width: 45px; height: 40px; border: none; outline: none; background-color: transparent;  background-size: 16px;
+    background-image: url('../icons/icon_menu.png'); background-repeat: no-repeat; background-position: center; transition: 0.2s; cursor: pointer; }
+.titleBar > .toggleButton:hover{ background-color:  var(--SUBMENUS); }
+.titleBar > .toggleButton:active{ background-color: var(--MOUSEACTIVE); }
+.titleBar > img{ margin-left: 10px; width: 30px; height: 30px;}
+.titleBar > .title { margin-left: 10px; width: 100%; line-height: 30px; margin-top: Spx; padding-bottom: Spx; -webkit-app-region: drag; }
+.topBar > .titleBarBtns{ display: flex; flex-direction: row; width: 120px; height: 40px; }
+.titleBarBtns > .topBtn{ width: 40px; height: 40px; border: none; outline: none; background-color: transparent;  background-size: 12px;
+    background-repeat: no-repeat; background-position: center; transition: 0.2s; cursor: pointer; filter: } 
+.titleBarBtns > .topBtn:hover{ background-color: var(--SUBMENUS); filter: none}
+.titleBarBtns > .topBtn:active{ background-color: var(--MOUSEACTIVE); filter:none} 
+.titleBarBtns > .minimizeBtn{ background-image: url('../icons/icon_minimize.png');  }
+.titleBarBtns > .maximizeBtn{ background-image: url('../icons/icon_maximize.png');  }
+.titleBarBtns > .restoreBtn{ background-image: url('../icons/icon_restore.png'); }
+.titleBarBtns > .closeBtn{ background-image: url('../icons/icon_close.png'); } 
+.mainApp > .contentArea { display: flex; flex-direction: row; width: 100%; height: 100%; } 
+.contentArea > .leftMenu{ width: 280px; height: 100%; background-color: var(--SUBMENUS); transition: 0.4s; } 
+.contentArea > .contentPages{ width: 100%; height: 100%;background-color:var(--BG); -webkit-box-align:center; -webkit-box-pack:center; display:-webkit-box; -webkit-box-orient: vertical;} 
+
+input[type="text"] {background-color: var(--TOPBAR); color: var(--TEXT);}
+ 
+
+/*
+COLOURS:
+OLD
+    :root {
+    --TOPBAR:     #1B1D23;
+    --SUBMENUS:   #272C36;
+    --BG:         #2C313C;
+    --BORDER:     #343048;
+    --MOUSEACTIVE:#4F9FEE;
+    --TEXT:       #949AA7;
+NEW
+    :root {
+    --TOPBAR:     #323232;
+    --SUBMENUS:   #252525;
+    --BG:         #1E1E1E;
+    --BORDER:     #373737;
+    --MOUSEACTIVE:#4F9FEE;
+    --TEXT:       #8e8e8e;
+    }
+
+*/
+
+    
