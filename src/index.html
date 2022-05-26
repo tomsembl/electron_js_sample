@@ -1,6 +1,6 @@
 <html> 
     <head> 
-        <title>My First App Width Electron</title> 
+        <title>End RD Session</title> 
         <link rel="stylesheet" href="styles/style.css"> 
         <script defer src="js/appFunctions.js"></script> 
     </head> 
@@ -25,7 +25,10 @@
                     
                 </div> 
                 <div class="contentPages"> 
-                    <input id="username_input" type="search" placeholder="🔍︎ Search Username..." oninput="typed(this)" maxlength="20">
+                    <input id="username_input" type="search" spellcheck="false" placeholder="🔍︎ Search Username..." oninput="typed(this)" maxlength="20">
+                    <div id="autocomplete-div" class="invisible">
+
+                    </div>
                 </div> 
             </div> 
         </div> 

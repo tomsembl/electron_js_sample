@@ -1,8 +1,40 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+//const mysql = require('mysql')
+const fs = require('fs')
+const child_process = require("child_process")
 const ipc = ipcMain
+const ps_script_path = "./query_users.ps1"
+var user_list = []
+var user_list_historical
 
+function read_user_list_file(is_new=false){
+  fs.readFile("./user_list.json", "utf8", (err, data) => {
+    if (err) {
+      console.log("File read failed:", err);
+      return;
+    }
+    if (is_new){user_list = JSON.parse(data)}
+    else{user_list_historical = JSON.parse(data)}
+    return
+  })
+}
+
+function query_sql() {
+  var spawn = child_process.spawn,child;
+  child = spawn("powershell.exe",[ps_script_path]);
+  child.stdout.on("data",function(data){console.log("Powershell Data: " + data.toString("utf-8"))})
+  child.stderr.on("data",function(data){console.log("Powershell Errors: " + data)})
+  child.on("exit",function(){
+    read_user_list_file(true)
+    console.log("Powershell Script finished")
+  })
+  child.stdin.end();
+}
+
+read_user_list_file()
+query_sql()
 
 function createWindow () {
   // Create the browser window.
@@ -44,8 +76,19 @@ function createWindow () {
     mainWindow.close()
   }) 
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  // get AD list
+  ipc.on('get_AD_list', (event,value)=>{ 
+    value = value.toLowerCase()
+    if(user_list.length === 0){
+      results = user_list_historical
+    } else { results = user_list }
+    list = []
+    for (const x of results) {
+      if (x.startsWith(value)) {list.push(x)}
+    }
+    event.sender.send('AD-reply', list)
+  }) 
+
 }
 
 // This method will be called when Electron has finished
